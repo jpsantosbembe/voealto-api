@@ -1,22 +1,24 @@
 const express = require('express')
 const router = express.Router();
 
-const mysql = require("../mysql").poolk
+const mysql = require("../mysql").pool
 
-router.get('/', (req, res, next) => {
-    res.status(200).send({
-        mensagem: 'get consulta'
-    })
-})
+router.get('/usuario', (req, res, next) => {
+    
+    mysql.getConnection((error, conn) => {
+        if (error) {return res.status(500).send({error: error})}
 
-router.post('/usuario', (req, res, next) => {
-    const usuario = {
-        id : req.body.id
-    }
-
-    res.status(201).send({
-        mensagem: 'post consulta'
-    })
+        conn.query(
+            'select * from usuario',
+            (error, result, fields) => {
+                if (error) {return res.status(500).send({error: error})}
+                
+                return res.status(200).send({
+                    resposta : result
+                })
+            }
+        )
+    })  
 })
 
 module.exports = router

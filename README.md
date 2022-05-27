@@ -1,16 +1,53 @@
-# voealto-api
 
-Requisitos:
-Node.js® -> https://nodejs.org/en/
-MySQL -> https://dev.mysql.com/downloads/mysql/
+# voeAlto API
 
-Requisitos opcionais:
-Visual Studio Code -> https://code.visualstudio.com/download
-Postman -> https://www.postman.com/downloads/
+API responsavel por turbinar o projeto voeAlto.
 
-Configurando o ambiente:
 
-Clonar este repositorio;
-Sincrozinar no MySQL Workbench o arquivo "voealto-db.mwb" da pasta /MySQLModel;
-No diretorio raiz do projeto executar no terminal o comando npm install;
-Executar comando npm start
+
+
+## Autores
+
+- [@santosbembe](https://github.com/jpsantosbembe)
+
+
+## Documentação da API
+
+#### Retorna todos os usuarios
+
+```http
+  GET /consulta/usuarios
+```
+
+
+#### Retorna um item
+
+```http
+  POST /cadastro/usuario
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `nome` `sobrenome` `cpf` `nickname` `senha`     | `string` | **Obrigatório**. Devem ser enviados em formato JSON|
+
+
+
+
+## Instalação
+
+Instale Node.js®
+
+Instale MySQL e sincronize no Workbench o arquivo da pasta MySQLModel ou crie um novo banco de dados com a seguinte tabela¹:
+
+    usuario(idusuario, usuarioNome, usuarioSobrenome, usuarioCPF, usuarioNick, usuarioSenha)
+
+¹ Faça os ajustes necessarios no arquivo "nodemon.json"
+
+Execute o projeto:
+
+```bash
+    cd pasta/do/projeto/voealto-api
+    npm install
+    npm start
+```
+    
